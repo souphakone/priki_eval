@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Reference;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class ReferenceSeeder extends Seeder
 {
@@ -14,7 +16,8 @@ class ReferenceSeeder extends Seeder
      */
     public function run()
     {
-        Reference::insert([
+        foreach (
+                [
             ['description' => 'Martin Fowler', 'url' => 'https://martinfowler.com/bliki/Yagni.html'],
             ['description' => 'Agile programming misconceptions', 'url' => 'https://opensource.com/life/16/1/lightning-talk-common-misconceptions-agile-and-open-source'],
             ['description' => 'Extreme Programming Explained', 'url' => 'https://www.amazon.com/Extreme-Programming-Explained-Embrace-Change/dp/0321278658/ref=as_li_ss_tl?ie=UTF8&qid=1493658091&sr=8-1&keywords=extreme+programming+explained&linkCode=sl1&tag=voidspace-20&linkId=2fb4e052071a43c337af9a809b64d8f9'],
@@ -29,6 +32,15 @@ class ReferenceSeeder extends Seeder
             ['description' => 'Ansible', 'url' => 'https://www.ansible.com/'],
             ['description' => 'Wayne Witzel', 'url' => 'https://twitter.com/wwitzel3'],
             ['description' => 'Teaching an elephant to dance', 'url' => 'https://www.redhat.com/en/engage/teaching-an-elephant-to-dance-20180131?intcmp=7016000000127cYAAQ'],
-        ]);
+            ]
+            as $description) {
+                Reference::create([
+                    'author' => Str::random(3,40),
+                    'title' => Str::random(3,40),
+                    'create_at' => Carbon::now()->subMinutes(rand(1, 5*24*60)),
+                    'description' => $description["description"],
+                    'url' => $description["url"],
+                ]);
+            }
     }
 }
