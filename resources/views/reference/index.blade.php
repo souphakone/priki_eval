@@ -10,6 +10,7 @@
                 <th>Date de parution</th>
                 <th>Descriptions</th>
                 <th></th>
+                <th></th>
             </tr>
             @foreach($references as $reference)
             <tr>
@@ -24,7 +25,12 @@
                     </button>
                     </a>
                 </td>
-
+                <td>
+                    <a href="{{route('references.edit', ['reference' => $reference->id]) }}">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                        Edit
+                    </button></td>
+                    </a>
             </tr>
             @endforeach
         

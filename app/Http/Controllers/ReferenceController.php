@@ -65,7 +65,8 @@ class ReferenceController extends Controller
      */
     public function edit($id)
     {
-        return view('reference.edit');
+        $reference = reference::find($id);
+        return view('reference.edit')->with(['reference' => $reference]);
     }
 
     /**
