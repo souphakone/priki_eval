@@ -21,7 +21,6 @@
     <a href="/" class="col-3">
         <div class="title">Priki</div>
     </a>
-        <div>Souphakone Samoutphonh</div>
     <div class="form-group col-3">
         <label class="control-label">Domaine:</label>
         <select id="dpdDomain">
